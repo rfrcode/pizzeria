@@ -37,7 +37,7 @@ _Para ejecutar la apliación se deberá hacer lo siguiente en el terminal_
 dotnet run
 ```
  _Una vez ejecutado el comando se podrá ir al enlace que será el siguiente 
- 
+
 <https://localhost:5001/WeatherForecast>
 
 
@@ -46,7 +46,7 @@ dotnet run
 * **David Trigo** - [davidtrigo](https://github.com/davidtrigo)
 * **Raúl**  - [rfrcode](https://github.com/rfrcode)
 * **Sergio** - [Sfalla87](https://github.com/sfalla87)
-* **Jonatan Piñero** - - [majonny](#https://github.com/majonny)
+* **Jonatan Piñero** - [majonny](#https://github.com/majonny)
 
 
 

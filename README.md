@@ -46,7 +46,7 @@ dotnet run
 * **David Trigo** - [davidtrigo](https://github.com/davidtrigo)
 * **Raúl**  - [rfrcode](https://github.com/rfrcode)
 * **Sergio** - [Sfalla87](https://github.com/sfalla87)
-* **Jonatan Piñero** - - [majonny](#https://github.com/majonny)
+* **Jonatan Piñero** - [majonny](https://github.com/majonny)
 
 
 

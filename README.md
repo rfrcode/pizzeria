@@ -20,9 +20,6 @@ _Actualmente está el contenido de prueba de la webapi  llamada Weather Forest C
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-
 Una vez descargado el proyecto , desde el terminal de Visual Studio Code escribir el siguiente comando
 ```
 dotnet restore
@@ -46,7 +43,7 @@ dotnet run
 * **David Trigo** - [davidtrigo](https://github.com/davidtrigo)
 * **Raúl**  - [rfrcode](https://github.com/rfrcode)
 * **Sergio** - [Sfalla87](https://github.com/sfalla87)
-* **Jonatan Piñero** - [majonny](#https://github.com/majonny)
+* **Jonatan Piñero** - [majonny](https://github.com/majonny)
 
 
 

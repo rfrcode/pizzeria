@@ -26,9 +26,15 @@ namespace pizzeria
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddControllers();
-              //*services.Add();
+             //services.Add();
             //new ServiceDescriptor(typeof(IUserService),typeof(UserServices));   //registramos controller
+        ///https://docs.microsoft.com/es-es/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1
+            var userServices =new ServiceDescriptor(typeof(IUserService),typeof(UserServices));
+            services.Add(userServices);
+
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

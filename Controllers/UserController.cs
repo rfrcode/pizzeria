@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using pizzeria.dtos;
 using pizzeria.services;
+using Microsoft.AspNetCore.Http;
 
 namespace pizzeria.Controllers
 {
@@ -30,12 +31,17 @@ namespace pizzeria.Controllers
         public void Post([FromBody]DTORegister userRegister)
         {  //error 404
              if(!ModelState.IsValid){
+                    ModelState.AddModelError("Name","error");  
 
-                
+                        //actionresult
+                        //task http response
+                  
+                        //async //await
+                //http response
                // cambiar void para retornar algo
                // si es valido retorna token
-               // si no error
-
+            //   return 0;
+              ///https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.httpresponse?view=aspnetcore-3.1    
 
             } 
             _userService.Register(userRegister);

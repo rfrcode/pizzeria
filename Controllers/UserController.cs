@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using pizzeria.dtos;
 using pizzeria.services;
 using Microsoft.AspNetCore.Http;
+using System.Net.Http;
 
 namespace pizzeria.Controllers
 {
@@ -27,24 +28,34 @@ namespace pizzeria.Controllers
 
         }
 
+
+               //   //actionresult
+            //task http response  
+            //async //await
+            //http response
+            // cambiar void para retornar algo
+            // si es valido retorna token
+
+
+
         [HttpPost]
-        public void Post([FromBody]DTORegister userRegister)
+        //        public void Post([FromBody]DTORegister userRegister)
+        public IActionResult Post(DTORegister userRegister)
+        
         {  //error 404
-             if(!ModelState.IsValid){
-                    ModelState.AddModelError("Name","error");  
+            if (!ModelState.IsValid)
+            {
 
-                        //actionresult
-                        //task http response
-                  
-                        //async //await
-                //http response
-               // cambiar void para retornar algo
-               // si es valido retorna token
-            //   return 0;
-              ///https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.httpresponse?view=aspnetcore-3.1    
+                //ModelState.AddModelError("Name","error"); 
+                //envia error 404  //https://docs.microsoft.com/es-es/aspnet/core/web-api/action-return-types?view=aspnetcore-3.1#iactionresult-type
+                    //muestra el error 
+               return BadRequest(ModelState); 
 
-            } 
-            _userService.Register(userRegister);
+            }
+             _userService.Register(userRegister);
+            // muestra el json
+            return Ok(userRegister);
+           
         }
     }
 }

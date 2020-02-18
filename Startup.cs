@@ -28,14 +28,8 @@ namespace pizzeria
         {
             
             services.AddControllers();
-             //services.Add();
-            //new ServiceDescriptor(typeof(IUserService),typeof(UserServices));   //registramos controller
-        ///https://docs.microsoft.com/es-es/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1
-         //   var userServices =new ServiceDescriptor(typeof(IUserService),typeof(UserServices));
-
             var userServices = new ServiceDescriptor(typeof(IUserService), typeof(UserServices), ServiceLifetime.Scoped);
             services.Add(userServices);
-
 
         }
 

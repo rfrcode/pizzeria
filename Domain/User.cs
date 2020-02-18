@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System;
 using pizzeria.dtos;
 namespace pizzeria.Domain
@@ -7,7 +8,9 @@ namespace pizzeria.Domain
     {
 
         public string Name { get; set; }
+    
         public string Email { get; set; }
+        
         public string PassWord { get; set; }
 
 
@@ -15,9 +18,12 @@ namespace pizzeria.Domain
         {
             var user = new User();
             user.Name = register.Name;
+            user.Email= register.Email;
             user.PassWord = register.PassWord; //TODO conviertir a encriptacion sha256
 
-            //https://docs.microsoft.com/es-es/dotnet/api/system.security.cryptography.sha256?view=netframework-4.8
+            /*   para la encriptación sha256
+            https://docs.microsoft.com/es-es/dotnet/api/system.security.cryptography.sha256?view=netframework-4.8
+            */
             return user;
         }
     }

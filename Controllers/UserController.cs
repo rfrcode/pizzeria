@@ -28,7 +28,16 @@ namespace pizzeria.Controllers
 
         [HttpPost]
         public void Post([FromBody]DTORegister userRegister)
-        {
+        {  //error 404
+             if(!ModelState.IsValid){
+
+                
+               // cambiar void para retornar algo
+               // si es valido retorna token
+               // si no error
+
+
+            } 
             _userService.Register(userRegister);
         }
     }

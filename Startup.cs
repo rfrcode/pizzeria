@@ -32,10 +32,7 @@ namespace pizzeria
         {
 
             /*services.AddMvc()   
-            .ConfigureApiBehaviorOptions(options => 
-            {   
-                options.SuppressModelStateInvalidFilter = true;  
-                
+            .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true;  
             });*/
           //  services.AddCors();
             services.AddControllers();
@@ -44,8 +41,7 @@ namespace pizzeria
             services.Add(userServices);
             services.Add(repostiroryIUser);
 
-            services.AddDbContext<PizzaContext>(options =>
-          ///  options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
+           services.AddDbContext<PizzaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

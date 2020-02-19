@@ -39,21 +39,9 @@ namespace pizzeria.Controllers
 
 
         [HttpPost]
-        //        public void Post([FromBody]DTORegister userRegister)
-        public IActionResult Post(DTORegister userRegister)
-        
-        {  //error 404
-            if (!ModelState.IsValid)
-            {
-
-                //ModelState.AddModelError("Name","error"); 
-                //envia error 404  //https://docs.microsoft.com/es-es/aspnet/core/web-api/action-return-types?view=aspnetcore-3.1#iactionresult-type
-                    //muestra el error 
-               return BadRequest(ModelState); 
-
-            }
-             _userService.Register(userRegister);
-            // muestra el json
+        public IActionResult Post([FromBody]DTORegister userRegister)
+        { 
+            _userService.Register(userRegister);
             return Ok(userRegister);
            
         }

@@ -5,15 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using pizzeria.services;
+using pizzeria.infrastructure;
 
 namespace pizzeria.services
 {
     public class UserServices : IUserService
     {
+        private readonly IRepositoryUser _repositoryUser;
+        public UserServices(IRepositoryUser repositoryUser)
+        {
+            _repositoryUser = repositoryUser;
+        }
         public void Register(DTORegister register)
         {
             var user = User.Create(register);
-            /**TODO: Grabar en bb.ddd*/
+            _repositoryUser.User.Add(user); //repository pattern
+            _repositoryUser.SaveChanges(); //unit of work            
         }
     }
 

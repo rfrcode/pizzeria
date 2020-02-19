@@ -11,6 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using pizzeria.services;
+using pizzeria.infrastructure;
+
+using Microsoft.EntityFrameworkCore;
+
 
 namespace pizzeria
 {
@@ -28,7 +32,7 @@ namespace pizzeria
         {
 
             /*services.AddMvc()   
-            .ConfigureApiBehaviorOptions(options =>
+            .ConfigureApiBehaviorOptions(options => 
             {   
                 options.SuppressModelStateInvalidFilter = true;  
                 
@@ -36,8 +40,12 @@ namespace pizzeria
           //  services.AddCors();
             services.AddControllers();
             var userServices = new ServiceDescriptor(typeof(IUserService), typeof(UserServices), ServiceLifetime.Scoped);
+            var repostiroryIUser = new ServiceDescriptor(typeof(IRepositoryUser),typeof(PizzaContext),ServiceLifetime.Scoped);
             services.Add(userServices);
+            services.Add(repostiroryIUser);
 
+            services.AddDbContext<PizzaContext>(options =>
+          ///  options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

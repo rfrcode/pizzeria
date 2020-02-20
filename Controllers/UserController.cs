@@ -41,8 +41,8 @@ namespace pizzeria.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]DTORegister userRegister)
         { 
-            _userService.Register(userRegister);
-            return Ok(userRegister);
+            var result = _userService.Register(userRegister);
+            return Ok(result);
            
         }
     }

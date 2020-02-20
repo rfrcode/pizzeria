@@ -7,11 +7,15 @@ namespace pizzeria.infrastructure
 
     public class PizzaContext : DbContext, IUoW, IRepositoryUser
     {
-        //https://elanderson.net/2019/11/entity-framework-core-no-database-provider-has-been-configured-for-this-dbcontext/
         public PizzaContext(DbContextOptions<PizzaContext> options) : base(options) { 
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+            modelBuilder.Entity<User>()                
+                .HasKey(c=>new {c.id});
+                
+        }
         public DbSet<User> User { get; set; }
         public override int SaveChanges()
         {

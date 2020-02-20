@@ -16,11 +16,15 @@ namespace pizzeria.services
         {
             _repositoryUser = repositoryUser;
         }
-        public void Register(DTORegister register)
+        public object Register(DTORegister register)
         {
             var user = User.Create(register);
             _repositoryUser.User.Add(user); //repository pattern
-            _repositoryUser.SaveChanges(); //unit of work            
+            _repositoryUser.SaveChanges(); //unit of work       
+            return new {
+                 id= user.id,
+                 name=user.Name   
+            };     
         }
     }
 

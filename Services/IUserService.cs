@@ -5,6 +5,6 @@ namespace pizzeria.services
 {
     public interface IUserService
     {
-        void Register(DTORegister register);
+        object Register(DTORegister register);
     }
 }

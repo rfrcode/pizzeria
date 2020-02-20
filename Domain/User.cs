@@ -6,7 +6,7 @@ namespace pizzeria.Domain
 
     public class User
     {
-        public  int id { get; set; }
+        public Guid id { get; set; }
         public string Name { get; set; }
 
         public string Email { get; set; }
@@ -17,14 +17,10 @@ namespace pizzeria.Domain
         public static User Create(DTORegister register)
         {
             var user = new User();
-            user.id = register.id;
+            user.id = Guid.NewGuid();
             user.Name = register.Name;
             user.Email = register.Email;
             user.PassWord = register.PassWord; //TODO conviertir a encriptacion sha256
-
-            /*   para la encriptación sha256
-            https://docs.microsoft.com/es-es/dotnet/api/system.security.cryptography.sha256?view=netframework-4.8
-            */
             return user;
         }
     }

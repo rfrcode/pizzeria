@@ -5,7 +5,7 @@ using pizzeria.Domain;
 namespace pizzeria.infrastructure
 {
 
-    public class PizzeriaContext : DbContext, IUoW, IRepositoryUser
+    public class PizzeriaContext : DbContext, IUoW, IRepositoryUser, IRepositoryIngredient
     {
         public PizzeriaContext(DbContextOptions<PizzeriaContext> options) : base(options) { 
 
@@ -17,6 +17,7 @@ namespace pizzeria.infrastructure
                 
         }
         public DbSet<User> User { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
         public override int SaveChanges()
         {
             try

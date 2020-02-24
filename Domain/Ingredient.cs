@@ -8,6 +8,14 @@ namespace pizzeria.Domain
         public string Name {get; set; }
         public Decimal price {get; set; }
         
-
+        public static Ingredient Create(DTOIngredient newIngredient)
+        {
+            var ingredient = new Ingredient();
+            ingredient.id = Guid.NewGuid();
+            ingredient.Name = newIngredient.Name;
+            ingredient.price = newIngredient.price;
+            return ingredient ;  
+        }
     }
+
 }

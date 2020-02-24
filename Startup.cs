@@ -41,6 +41,11 @@ namespace pizzeria
             services.Add(userServices);
             services.Add(repositoryUser);
 
+            var ingredientServices = new ServiceDescriptor(typeof(IUserService), typeof(UserServices), ServiceLifetime.Scoped);
+            var repositoryIngredient = new ServiceDescriptor(typeof(IRepositoryUser),typeof(PizzeriaContext),ServiceLifetime.Scoped);
+            services.Add(ingredientServices);
+            services.Add(repositoryIngredient);
+
            services.AddDbContext<PizzeriaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
 

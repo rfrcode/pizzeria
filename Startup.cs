@@ -34,14 +34,21 @@ namespace pizzeria
             /*services.AddMvc()   
             .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true;  
             });*/
-          //  services.AddCors();
+            //  services.AddCors();
             services.AddControllers();
             var userServices = new ServiceDescriptor(typeof(IUserService), typeof(UserServices), ServiceLifetime.Scoped);
-            var repositoryUser = new ServiceDescriptor(typeof(IRepositoryUser),typeof(PizzeriaContext),ServiceLifetime.Scoped);
+            var repositoryUser = new ServiceDescriptor(typeof(IRepositoryUser), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(userServices);
             services.Add(repositoryUser);
 
-           services.AddDbContext<PizzeriaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            var pizzaService = new ServiceDescriptor(typeof(IPizzaService), typeof(PizzaService), ServiceLifetime.Scoped);
+            var repositoryPizza = new ServiceDescriptor(typeof(IRepositoryPizza), typeof(PizzeriaContext), ServiceLifetime.Scoped);
+            services.Add(pizzaService);
+            services.Add(repositoryPizza);
+
+
+
+            services.AddDbContext<PizzeriaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

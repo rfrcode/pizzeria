@@ -41,8 +41,9 @@ namespace pizzeria
             services.Add(userServices);
             services.Add(repositoryUser);
 
-            var ingredientServices = new ServiceDescriptor(typeof(IUserService), typeof(UserServices), ServiceLifetime.Scoped);
-            var repositoryIngredient = new ServiceDescriptor(typeof(IRepositoryUser),typeof(PizzeriaContext),ServiceLifetime.Scoped);
+            services.AddControllers();
+            var ingredientServices = new ServiceDescriptor(typeof(IIngredientService), typeof(IngredientService), ServiceLifetime.Scoped);
+            var repositoryIngredient = new ServiceDescriptor(typeof(IRepositoryIngredient),typeof(PizzeriaContext),ServiceLifetime.Scoped);
             services.Add(ingredientServices);
             services.Add(repositoryIngredient);
 

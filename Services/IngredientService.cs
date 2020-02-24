@@ -19,6 +19,7 @@ namespace pizzeria.services
             _repositoryIngredient.Ingredients.Add(ingredient); 
             _repositoryIngredient.SaveChanges();        
             return new {
+                 id=ingredient.id,
                  Name= ingredient.Name,
                  price = ingredient.price
             };                

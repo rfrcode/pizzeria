@@ -14,6 +14,9 @@ namespace pizzeria.infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.Entity<User>()                
                 .HasKey(c=>new {c.id});
+            modelBuilder.Entity<Ingredient>()                
+                .HasKey(c=>new {c.id});
+                    
                 
         }
         public DbSet<User> User { get; set; }

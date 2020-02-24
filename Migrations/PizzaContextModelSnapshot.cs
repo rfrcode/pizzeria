@@ -8,8 +8,8 @@ using pizzeria.infrastructure;
 
 namespace pizzeria.Migrations
 {
-    [DbContext(typeof(PizzaContext))]
-    partial class PizzaContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(PizzeriaContext))]
+    partial class PizzeriaContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

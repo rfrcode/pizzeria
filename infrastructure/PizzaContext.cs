@@ -5,9 +5,9 @@ using pizzeria.Domain;
 namespace pizzeria.infrastructure
 {
 
-    public class PizzaContext : DbContext, IUoW, IRepositoryUser
+    public class PizzeriaContext : DbContext, IUoW, IRepositoryUser
     {
-        public PizzaContext(DbContextOptions<PizzaContext> options) : base(options) { 
+        public PizzeriaContext(DbContextOptions<PizzeriaContext> options) : base(options) { 
 
         }
 

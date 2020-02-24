@@ -9,7 +9,7 @@ using pizzeria.infrastructure;
 
 namespace pizzeria.Migrations
 {
-    [DbContext(typeof(PizzaContext))]
+    [DbContext(typeof(PizzeriaContext))]
     [Migration("20200220122115_InitialCreate")]
     partial class InitialCreate
     {

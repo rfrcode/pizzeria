@@ -37,11 +37,11 @@ namespace pizzeria
           //  services.AddCors();
             services.AddControllers();
             var userServices = new ServiceDescriptor(typeof(IUserService), typeof(UserServices), ServiceLifetime.Scoped);
-            var repostiroryIUser = new ServiceDescriptor(typeof(IRepositoryUser),typeof(PizzaContext),ServiceLifetime.Scoped);
+            var repositoryUser = new ServiceDescriptor(typeof(IRepositoryUser),typeof(PizzeriaContext),ServiceLifetime.Scoped);
             services.Add(userServices);
-            services.Add(repostiroryIUser);
+            services.Add(repositoryUser);
 
-           services.AddDbContext<PizzaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+           services.AddDbContext<PizzeriaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

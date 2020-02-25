@@ -18,9 +18,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace pizzeria
 {
-    public class Startup
+    public class Pepito
     {
-        public Startup(IConfiguration configuration)
+        public Pepito(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -44,6 +44,7 @@ namespace pizzeria
             var pizzaService = new ServiceDescriptor(typeof(IPizzaService), typeof(PizzaService), ServiceLifetime.Scoped);
             var repositoryPizza = new ServiceDescriptor(typeof(IRepositoryPizza), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(pizzaService);
+
             services.Add(repositoryPizza);
 
 

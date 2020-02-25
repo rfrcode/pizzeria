@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using pizzeria.dtos;
@@ -12,7 +13,7 @@ namespace pizzeria.Controllers
     {
 
         private readonly ILogger<PizzaController> _logger;
-        private readonly IPizzaService _pizzaService;
+        private readonly pizzeria.services.IPizzaService _pizzaService;
 
         public PizzaController(ILogger<PizzaController> logger, IPizzaService pizzaService)
         {
@@ -21,10 +22,10 @@ namespace pizzeria.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]DTOPizza newPizza)
+        public void Post([FromBody]IFormFile file)
         { 
-            var result = _pizzaService.AddPizza(newPizza);
-            return Ok(result);
+            /*var result = _pizzaService.AddPizza(newPizza);
+            return Ok(result);*/
            
         }
     }

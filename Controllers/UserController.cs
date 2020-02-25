@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using pizzeria.dtos;
 using pizzeria.services;
-using Microsoft.AspNetCore.Http;
-using System.Net.Http;
 
 namespace pizzeria.Controllers
 {

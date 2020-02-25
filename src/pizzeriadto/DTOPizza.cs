@@ -9,7 +9,7 @@ namespace pizzeria.dtos
     {
 
         [Required]
-        public string Name { get; set; } 
+        public string Name { get; set; }
         [Range(0, 10)]
         public int Rank { get; set; }
 

@@ -11,6 +11,10 @@ namespace pizzeria.infrastructure
 
         }
 
+        public PizzeriaContext()
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasKey(c => new { c.id });

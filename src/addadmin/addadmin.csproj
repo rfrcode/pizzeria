@@ -4,5 +4,12 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+ <ItemGroup>
+  <ProjectReference Include="../pizzeriadto/pizzeriadto.csproj" />
+  <ProjectReference Include="../pizzeriainfraestrure/pizzeriainfraestrure.csproj" />
+<ProjectReference Include="../pizzeriadomain/pizzeriadomain.csproj" />
+<ProjectReference Include="../pizzeriaservices/pizzeriaservices.csproj" />
 
+
+</ItemGroup>
 </Project>

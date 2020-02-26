@@ -16,12 +16,13 @@ namespace pizzeria.Domain
         public string PassWord { get; set; }
 
 
-        public  static string GetPassWord(string passWord){
+        public static string GetPassWord(string passWord)
+        {
 
-             using (SHA256 mySHA256 = SHA256.Create())
+            using (SHA256 mySHA256 = SHA256.Create())
             {
-                var hash = mySHA256.ComputeHash(Encoding.ASCII.GetBytes(passWord));
-                return  Convert.ToBase64String(hash); 
+                var hash = mySHA256.ComputeHash(Encoding.UTF8.GetBytes(passWord));
+                return Convert.ToBase64String(hash);
             }
 
         }

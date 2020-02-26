@@ -1,6 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 using System;
 using pizzeria.dtos;
+using System.Text;
+
 namespace pizzeria.Domain
 {
 
@@ -14,13 +16,22 @@ namespace pizzeria.Domain
         public string PassWord { get; set; }
 
 
+        public  static string GetPassWord(string passWord){
+
+             using (SHA256 mySHA256 = SHA256.Create())
+            {
+                var hash = mySHA256.ComputeHash(Encoding.ASCII.GetBytes(passWord));
+                return  Convert.ToBase64String(hash); 
+            }
+
+        }
         public static User Create(DTORegister register)
         {
             var user = new User();
             user.id = Guid.NewGuid();
             user.Name = register.Name;
             user.Email = register.Email;
-            user.PassWord = register.PassWord; //TODO conviertir a encriptacion sha256
+            user.PassWord = GetPassWord(register.PassWord)
             return user;
         }
     }

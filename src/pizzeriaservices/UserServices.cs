@@ -30,8 +30,8 @@ namespace pizzeria.services
                 //recuperar el user
                 var user = _repositoryUser.User.Where(u=>u.Email == email).FirstOrDefault();
                 if(user!=null){
-                    if (User.GetPassWord(passWord)!=user.PassWord{
-                        throw new Exception("Usuario incorrecto")
+                    if (User.GetPassWord(passWord)!=user.PassWord){
+                        throw new Exception("Usuario incorrecto");
                     }
                 }
                 //retornar el jwt y guardar en redis la session

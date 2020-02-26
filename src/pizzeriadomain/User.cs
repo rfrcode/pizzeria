@@ -31,7 +31,7 @@ namespace pizzeria.Domain
             user.id = Guid.NewGuid();
             user.Name = register.Name;
             user.Email = register.Email;
-            user.PassWord = GetPassWord(register.PassWord)
+            user.PassWord = GetPassWord(register.PassWord);
             return user;
         }
     }

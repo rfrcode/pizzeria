@@ -6,7 +6,6 @@ using pizzeria.services;
 namespace pizzeria.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class UserController : ControllerBase
     {
 
@@ -23,21 +22,49 @@ namespace pizzeria.Controllers
         }
 
 
-               //   //actionresult
-            //task http response  
-            //async //await
-            //http response
-            // cambiar void para retornar algo
-            // si es valido retorna token
+        //   //actionresult
+        //task http response  
+        //async //await
+        //http response
+        // cambiar void para retornar algo
+        // si es valido retorna token
 
 
 
         [HttpPost]
-        public IActionResult Post([FromBody]DTORegister userRegister)
-        { 
+        [Route("Register")]
+        public IActionResult Register([FromBody]DTORegister userRegister)
+        {
             var result = _userService.Register(userRegister);
             return Ok(result);
-           
+
+        }
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login([FromBody]DTOLogin userLogin)
+        {
+            var result = _userService.Login(userLogin);
+            return Ok(result);
+
+        }
+        [HttpPost]
+        [Route("Logout")]
+
+        //todo 
+        public IActionResult Logout([FromBody]DTORegister userRegister)
+        {
+            var result = _userService.Logout(userRegister);
+            return Ok(result);
+
+        }
+        [HttpPost]
+        [Route("Refresh")]
+        //todo
+        public IActionResult Refresh([FromBody]DTORegister userRegister)
+        {
+            var result = _userService.Refresh(userRegister);
+            return Ok(result);
+
         }
     }
 }

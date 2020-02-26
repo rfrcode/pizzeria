@@ -13,10 +13,11 @@ namespace addadmin
             var createAdmin = File.ReadAllText(args[0]);
             var dTORegister = JsonSerializer.Deserialize<DTORegister>(createAdmin);
 
+            
             //var context = new PizzeriaContext();
 
-            var userService = new UserServices(context);
-            userService.Register(dTORegister)
+            //var userService = new UserServices(context);
+            //userService.Register(dTORegister);
         }
     }
 }

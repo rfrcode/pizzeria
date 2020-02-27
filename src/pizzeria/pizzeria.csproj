@@ -10,8 +10,7 @@
   
   <ProjectReference Include="../pizzeriadto/pizzeriadto.csproj" />
   <ProjectReference Include="../pizzeriainfraestrure/pizzeriainfraestrure.csproj" />
-  
-    <ProjectReference Include="../pizzeriaservices/pizzeriaservices.csproj" />
+  <ProjectReference Include="../pizzeriaservices/pizzeriaservices.csproj" />
   
   
  

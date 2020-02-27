@@ -6,6 +6,7 @@ using pizzeria.services;
 namespace pizzeria.Controllers
 {
     [ApiController]
+    //[Route("[controller]")]
     public class UserController : ControllerBase
     {
 
@@ -32,12 +33,11 @@ namespace pizzeria.Controllers
 
 
         [HttpPost]
-        [Route("Register")]
+        [Route("Registe")]
         public IActionResult Register([FromBody]DTORegister userRegister)
         {
             var result = _userService.Register(userRegister);
             return Ok(result);
-
         }
         [HttpPost]
         [Route("Login")]
@@ -45,26 +45,23 @@ namespace pizzeria.Controllers
         {
             var result = _userService.Login(userLogin);
             return Ok(result);
-
         }
         [HttpPost]
         [Route("Logout")]
 
         //todo 
-        public IActionResult Logout([FromBody]DTORegister userRegister)
+        public IActionResult Logout([FromBody]DTOLogin userLogin)
         {
-            var result = _userService.Logout(userRegister);
+            var result = _userService.Logout(userLogin);
             return Ok(result);
-
         }
         [HttpPost]
         [Route("Refresh")]
         //todo
-        public IActionResult Refresh([FromBody]DTORegister userRegister)
+        public IActionResult Refresh([FromBody]DTOLogin userLogin)
         {
-            var result = _userService.Refresh(userRegister);
+            var result = _userService.Login(userLogin);
             return Ok(result);
-
         }
     }
 }

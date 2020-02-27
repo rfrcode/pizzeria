@@ -20,27 +20,70 @@ namespace pizzeria.services
         {
             var user = User.Create(register);
             _repositoryUser.User.Add(user); //repository pattern
-            _repositoryUser.SaveChanges(); //unit of work       
-            return new {
-                 id= user.id,
-                 name=user.Name   
-            };     
+            _repositoryUser.SaveChanges(); //unit of work
+            return new
+            {
+                id = user.id,
+                name = user.Name
+            };
         }
-        public void Login(string email,string passWord){
-                //recuperar el user
-                var user = _repositoryUser.User.Where(u=>u.Email == email).FirstOrDefault();
-                if(user!=null){
-                    if (User.GetPassWord(passWord)!=user.PassWord){
-                        throw new Exception("Usuario incorrecto");
-                    }
+        public object Login(DTOLogin login)
+        {
+
+            //recuperar el user
+            var user = _repositoryUser.User.Where(u => u.Email == login.Email).FirstOrDefault();
+            if (user != null)
+            {
+                if (User.GetPassWord(login.PassWord) != user.PassWord)
+                {
+                    throw new Exception("Usuario incorrecto");
                 }
-                //retornar el jwt y guardar en redis la session
+            }
+            //retornar el jwt y guardar en redis la session
+            return new
+            {
+                id = user.id,
+                name = user.Name
+            };
 
         }
-        public void Logout(){
+        //todo
+        public object Logout(DTOLogin login)
+        {
+            //recuperar el user
+            var user = _repositoryUser.User.Where(u => u.Email == login.Email).FirstOrDefault();
+            if (user != null)
+            {
+                if (User.GetPassWord(login.PassWord) != user.PassWord)
+                {
+                    throw new Exception("Usuario incorrecto");
+                }
+            }
+            //todo
+            return new
+            {
+                message = "logout test succesful"
+            };
             //borrar de redis la session
         }
-        public void Refresh(){
+        //todo 
+        public object Refresh(DTOLogin login)
+        {
+            var user = _repositoryUser.User.Where(u => u.Email == login.Email).FirstOrDefault();
+            if (user != null)
+            {
+                if (User.GetPassWord(login.PassWord) != user.PassWord)
+                {
+                    throw new Exception("Usuario incorrecto");
+                }
+            }
+            //retornar el jwt y guardar en redis la session
+            //todo
+            return new
+            {
+                id = user.id,
+                name = user.Name
+            };
             //comprobar en redis el ultimo token
             //elimino
             //creo uno nuevo

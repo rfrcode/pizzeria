@@ -10,8 +10,8 @@ namespace pizzeria.Domain
         public Guid id { set; get; }
         public String Name { get; set; }
 
-        public int Rank { get; set; }
-        public List<Ingredient> Ingredients { get;set; }
+        
+        public List<Guid> Ingredients { get;set; }
 
         //lista comentarios
         // const de 5.00M
@@ -23,7 +23,7 @@ namespace pizzeria.Domain
            var pizza = new Pizza();     
             pizza.id= Guid.NewGuid();
             pizza.Name= newPizza.Name;
-            pizza.Rank= newPizza.Rank;
+            
             return pizza;
         }
 

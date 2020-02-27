@@ -11,8 +11,6 @@ namespace pizzeria.dtos
         [Required]
         public string Name { get; set; }
         [Range(0, 10)]
-        public int Rank { get; set; }
-
         public List<Guid> Ingredients { get; set; }
         //lista commentarios
 

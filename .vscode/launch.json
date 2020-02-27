@@ -8,9 +8,9 @@
             "name": "AddAdmin - .NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build AddAdmin",
             "program": "${workspaceFolder}/src/addadmin/bin/Debug/netcoreapp3.1/addadmin.dll",
-            "args": [],
+            "args": ["testadmin.json"],
             "cwd": "${workspaceFolder}/src/addadmin",
             "console": "internalConsole",
             "stopAtEntry": false

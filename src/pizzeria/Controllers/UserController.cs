@@ -33,7 +33,7 @@ namespace pizzeria.Controllers
 
 
         [HttpPost]
-        [Route("Registe")]
+        [Route("Register")]
         public IActionResult Register([FromBody]DTORegister userRegister)
         {
             var result = _userService.Register(userRegister);

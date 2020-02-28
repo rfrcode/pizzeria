@@ -1,8 +1,9 @@
+using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using pizzeria.dtos;
 using pizzeria.services;
+using pizzeria.utils;
 
 
 namespace pizzeria.Controllers
@@ -22,11 +23,16 @@ namespace pizzeria.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]IFormFile file)
-        { 
-            /*var result = _pizzaService.AddPizza(newPizza);
-            return Ok(result);*/
-           
+        public void Post([FromForm]IFormFile file)
+        {
+            if (file.Length > 0)
+            {
+                using (var fileStream = new FileStream(file.FileName, FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+
+            }
         }
     }
 }

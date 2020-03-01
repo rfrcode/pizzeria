@@ -23,16 +23,15 @@ namespace pizzeria.Controllers
         }
 
         [HttpPost]
-        public void Post([FromForm]IFormFile file)
+        public IActionResult Post([FromForm]IFormFile file)
         {
-            if (file.Length > 0)
+            if (!ModelState.IsValid)
             {
-                using (var fileStream = new FileStream(file.FileName, FileMode.Create))
-                {
-                    file.CopyTo(fileStream);
-                }
+                return BadRequest(ModelState);
 
             }
+         //   _pizzaService.Upload(file);
+            return Ok();
         }
     }
 }

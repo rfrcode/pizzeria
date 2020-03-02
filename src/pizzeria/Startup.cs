@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using pizzeria.services;
 using pizzeria.infrastructure;
+using pizzeria.utils;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -42,10 +43,13 @@ namespace pizzeria
             services.Add(repositoryUser);
 
             var pizzaService = new ServiceDescriptor(typeof(IPizzaService), typeof(PizzaService), ServiceLifetime.Scoped);
-            var repositoryPizza = new ServiceDescriptor(typeof(IRepositoryPizza), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(pizzaService);
-
+            var repositoryPizza = new ServiceDescriptor(typeof(IRepositoryPizza), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(repositoryPizza);
+            var streamService = new ServiceDescriptor(typeof(IStreamService),typeof(StreamService),ServiceLifetime.Scoped);
+            services.Add(streamService);
+
+            
 
 
 

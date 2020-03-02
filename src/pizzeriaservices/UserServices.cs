@@ -6,26 +6,27 @@ using System.Linq;
 
 using pizzeria.services;
 using pizzeria.infrastructure;
+using Microsoft.Extensions.Configuration;
+using JWT.Builder;
+using JWT.Algorithms;
 
 namespace pizzeria.services
 {
     public class UserServices : IUserService
     {
         private readonly IRepositoryUser _repositoryUser;
-        public UserServices(IRepositoryUser repositoryUser)
+        private readonly IConfiguration _configuration;
+        public UserServices(IRepositoryUser repositoryUser, IConfiguration Configuration)
         {
             _repositoryUser = repositoryUser;
+            _configuration = Configuration;
         }
         public object Register(DTORegister register)
         {
             var user = User.Create(register);
             _repositoryUser.User.Add(user); //repository pattern
             _repositoryUser.SaveChanges(); //unit of work
-            return new
-            {
-                id = user.id,
-                name = user.Name
-            };
+            return Login(new DTOLogin() { Email = register.Email, PassWord = register.PassWord });
         }
         public object Login(DTOLogin login)
         {
@@ -36,15 +37,18 @@ namespace pizzeria.services
             {
                 if (User.GetPassWord(login.PassWord) != user.PassWord)
                 {
-                    throw new Exception("Usuario incorrecto");
+                    throw new Exception("Wrong user");
                 }
             }
             //retornar el jwt y guardar en redis la session
-            return new
-            {
-                id = user.id,
-                name = user.Name
-            };
+            return new JwtBuilder()
+                .WithAlgorithm(new HMACSHA256Algorithm())
+                //todo leer de config
+                .WithSecret(_configuration.GetValue<string>("secret"))
+                .AddClaim("exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds())
+                .AddClaim("user", user.Name)            
+                .Encode();
+
 
         }
         //todo

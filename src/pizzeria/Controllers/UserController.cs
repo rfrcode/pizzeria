@@ -33,21 +33,21 @@ namespace pizzeria.Controllers
 
 
         [HttpPost]
-        [Route("Register")]
+        [Route("register")]
         public IActionResult Register([FromBody]DTORegister userRegister)
         {
             var result = _userService.Register(userRegister);
             return Ok(result);
         }
         [HttpPost]
-        [Route("Login")]
+        [Route("login")]
         public IActionResult Login([FromBody]DTOLogin userLogin)
         {
             var result = _userService.Login(userLogin);
             return Ok(result);
         }
         [HttpPost]
-        [Route("Logout")]
+        [Route("logout")]
 
         //todo 
         public IActionResult Logout([FromBody]DTOLogin userLogin)
@@ -56,7 +56,7 @@ namespace pizzeria.Controllers
             return Ok(result);
         }
         [HttpPost]
-        [Route("Refresh")]
+        [Route("refresh")]
         //todo
         public IActionResult Refresh([FromBody]DTOLogin userLogin)
         {

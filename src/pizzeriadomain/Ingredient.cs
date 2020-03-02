@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System;
-using pizzeria.dtos;
+using ingredient.dtos;
+
 namespace pizzeria.Domain
 {
     public class Ingredient{
@@ -8,6 +9,16 @@ namespace pizzeria.Domain
         public string Name {get; set; }
         public Decimal price {get; set; }
         
-
+        public static Ingredient Create(DTOIngredient newPizza)
+        {
+            var ingredient = new Ingredient();     
+            ingredient.id= Guid.NewGuid();
+            ingredient.Name= newPizza.Name;
+            ingredient.price = newPizza.price;
+            
+            return ingredient;
+        }
     }
+
+    
 }

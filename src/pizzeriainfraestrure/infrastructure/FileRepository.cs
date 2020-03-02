@@ -13,15 +13,21 @@ namespace pizzeria.infrastructure
 
         public void Add(File image)
         {
-            using (var multiplexer = ConnectionMultiplexer.Connect("localhost:6379"))
-            {
-                byte[] byteArray = { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06 };
-                var db = multiplexer.GetDatabase();
-                db.StringSet("bytearray", byteArray);
-            }
 
-             
-            //db.StringSet("image", image);   // Keyname , keyvalue
+            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("localhost:6379");
+            IDatabase db = redis.GetDatabase();
+             byte[] byteArray = { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06 };
+       //     db.StringSet("image", image);   // Keyname , keyvalue
+
+
+            //  byte[] byteArray = { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06 };
+            //   IDatabase database = redis.GetDatabase();
+
+
+
+
+
+            //  db.StringSet("image", image);   // Keyname , keyvalue
             //db.StringGet("image");  //recupera valor 
         }
     }

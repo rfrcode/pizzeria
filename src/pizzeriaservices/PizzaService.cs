@@ -6,7 +6,9 @@ namespace pizzeria.services
 {
     public class PizzaService : IPizzaService
     {
+  
         private readonly IRepositoryPizza _repositoryPizza;
+     //   private readonly IFileRepository _repositoryFile;
         public PizzaService(IRepositoryPizza repositoryPizza)
         {
             _repositoryPizza = repositoryPizza;
@@ -16,27 +18,31 @@ namespace pizzeria.services
 
             //crear lista de ingredientes
             var pizza = Pizza.Create(newPizza);
-            _repositoryPizza.Pizza.Add(pizza); 
-            _repositoryPizza.SaveChanges(); 
-            return new {
-                 id= pizza.id,
-                 name=pizza.Name   
-            };     
+            _repositoryPizza.Pizza.Add(pizza);
+            _repositoryPizza.SaveChanges();
+            return new
+            {
+                id = pizza.id,
+                name = pizza.Name
+            };
         }
 
 
-          public object AddImage(byte[] image){
-                 var file = File.Create(image);
+        public object AddImage(byte[] image)
+        {
+            var file = File.Create(image);  
             //Guardar en Redis
+            _repositoryFile.Add(file);
 
-
-
-            return new {
+           // _repositoryFile.Add(image);
+        
+            return new
+            {
                 Id = file.Id
             };
 
 
-          }
+        }
     }
 
 }

@@ -7,7 +7,7 @@ namespace pizzeria.Domain{
         public static File Create(byte[] Image){
             return new File(){
                 Id=Guid.NewGuid(),
-                Image = Image,
+                Image = Image
             };
         }
     }

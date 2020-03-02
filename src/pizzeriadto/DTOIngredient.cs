@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace ingredient.dtos
+namespace pizzeria.dtos
 {
 
     public class DTOIngredient

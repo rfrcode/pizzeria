@@ -1,10 +1,9 @@
-using System;
 using pizzeria.dtos;
 
 namespace pizzeria.services
 {
     public interface IIngredientService
     {
-        object Register(DTORegister register);
+        object AddIngredient(DTOIngredient ingredient);
     }
 }

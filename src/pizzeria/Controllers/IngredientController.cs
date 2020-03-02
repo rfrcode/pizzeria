@@ -1,12 +1,12 @@
+using System.Collections.Generic;
 using System.IO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using pizzeria.dtos;
 using pizzeria.services;
-using pizzeria.utils;
 
 
-namespace ingredient.Controllers
+namespace pizzeria.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -14,23 +14,18 @@ namespace ingredient.Controllers
     {
 
         private readonly ILogger<IngredientController> _logger;
-        private readonly ingredient.services.IIngredientService _pizzaService;
+        private readonly IIngredientService _ingredientService;
 
-        public IngredientController(ILogger<IngredientController> logger, IIngredientService pizzaService)
+        public IngredientController(ILogger<IngredientController> logger, IIngredientService ingredientService)
         {
             _logger = logger;
-            _pizzaService = pizzaService;
+            _ingredientService = ingredientService;
         }
 
-        [HttpPost]
-        public IActionResult Post([FromForm]IFormFile file)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
 
-            }
-         //   _pizzaService.Upload(file);
+        [HttpPost]
+        public IActionResult Post()
+        { 
             return Ok();
         }
     }

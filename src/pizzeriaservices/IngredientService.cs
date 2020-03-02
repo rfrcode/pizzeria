@@ -1,14 +1,13 @@
 using pizzeria.dtos;
 using pizzeria.Domain;
 using pizzeria.infrastructure;
-using ingredient.dtos;
 
 namespace pizzeria.services
 {
     public class IngredientService : IIngredientService
     {
         private readonly IRepositoryIngredient _repositoryIngredient;
-        public PizzaService(IRepositoryPizza repositoryIngredient)
+        public IngredientService(IRepositoryIngredient repositoryIngredient)
         {
             _repositoryIngredient = repositoryIngredient;
         }
@@ -17,13 +16,14 @@ namespace pizzeria.services
 
             //crear lista de ingredientes
             var pizza = Ingredient.Create(newPizza);
-            _repositoryIngredient.Ingredient.Create(pizza); 
-            _repositoryPizza.SaveChanges(); 
+            _repositoryIngredient.Ingredient.Add(pizza); 
+            _repositoryIngredient.SaveChanges(); 
             return new {
                  id= pizza.id,
                  name=pizza.Name   
             };     
         }
+
     }
 
 }

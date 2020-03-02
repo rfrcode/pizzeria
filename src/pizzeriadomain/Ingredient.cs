@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System;
-using ingredient.dtos;
+using pizzeria.dtos;
 
 namespace pizzeria.Domain
 {

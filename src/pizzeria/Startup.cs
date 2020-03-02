@@ -44,9 +44,15 @@ namespace pizzeria
             var pizzaService = new ServiceDescriptor(typeof(IPizzaService), typeof(PizzaService), ServiceLifetime.Scoped);
             var repositoryPizza = new ServiceDescriptor(typeof(IRepositoryPizza), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(pizzaService);
-
             services.Add(repositoryPizza);
 
+
+
+            services.AddControllers();
+            var ingredientServices = new ServiceDescriptor(typeof(IIngredientService), typeof(IIngredientService), ServiceLifetime.Scoped);
+            var repositoryIngredient = new ServiceDescriptor(typeof(IRepositoryIngredient), typeof(PizzeriaContext), ServiceLifetime.Scoped);
+            services.Add(ingredientServices);
+            services.Add(repositoryIngredient);
 
 
             services.AddDbContext<PizzeriaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));

@@ -23,6 +23,20 @@ namespace pizzeria.services
                  name=pizza.Name   
             };     
         }
+
+
+          public object AddImage(byte[] image){
+                 var file = File.Create(image);
+            //Guardar en Redis
+
+
+
+            return new {
+                Id = file.Id
+            };
+
+
+          }
     }
 
 }

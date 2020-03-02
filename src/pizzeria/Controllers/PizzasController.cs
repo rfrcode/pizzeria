@@ -10,7 +10,6 @@ namespace pizzeria.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Route("[controller]/[action]/")]
     public class PizzasController : ControllerBase
     {
 
@@ -24,7 +23,7 @@ namespace pizzeria.Controllers
             _pizzaService = pizzaService;
             _streamService = streamService;
         }
-       // [Route("/pizzas/image")]
+
         [HttpPost("/pizzas/image")]
         public IActionResult Post([FromForm]IFormFile file)
         {

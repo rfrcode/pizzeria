@@ -10,12 +10,11 @@ namespace pizzeria.Domain
         public Guid id { set; get; }
         public String Name { get; set; }
 
-        
+        public byte[] Image { get; set; }
         public List<Guid> Ingredients { get;set; }
 
         //lista comentarios
         // const de 5.00M
-        // imagen
 
 
         public static Pizza Create(DTOPizza newPizza)

@@ -6,8 +6,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2" />
-    <PackageReference Include="Redis-64" Version="3.0.503" />
-    <PackageReference Include="StackExchange.Redis" Version="2.0.601" /> 
+    <!--<PackageReference Include="Redis-64" Version="3.0.503" /> -->
       
   
   <ProjectReference Include="../pizzeriadto/pizzeriadto.csproj" />

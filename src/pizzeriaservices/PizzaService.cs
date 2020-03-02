@@ -32,7 +32,7 @@ namespace pizzeria.services
         {
             var file = File.Create(image);  
             //Guardar en Redis
-            _repositoryFile.Add(file);
+       //     _repositoryFile.Add(file);
 
            // _repositoryFile.Add(image);
         

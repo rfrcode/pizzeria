@@ -2,8 +2,8 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ingredient.services;
-using ingredient.utils;
+using pizzeria.services;
+using pizzeria.utils;
 
 
 namespace ingredient.Controllers

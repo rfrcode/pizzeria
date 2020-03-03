@@ -20,7 +20,8 @@ namespace pizzeria.infrastructure
         {
             modelBuilder.Entity<User>().HasKey(c => new { c.id });
             modelBuilder.Entity<Ingredient>().HasKey(c => new { c.id });
-            //modelBuilder.Entity<Pizza>().HasKey(c => new { c.id });
+           
+           // modelBuilder.Entity<Pizza>().HasKey(c => new { c.id, c.Ingredients});
 
         }
 

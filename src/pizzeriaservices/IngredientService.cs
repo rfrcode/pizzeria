@@ -17,7 +17,8 @@ namespace pizzeria.services
             //crear lista de ingredientes
             var pizza = Ingredient.Create(newPizza);
             _repositoryIngredient.Ingredient.Add(pizza); 
-            _repositoryIngredient.SaveChanges(); 
+            _repositoryIngredient.SaveChanges();
+            System.Console.Write("bien");
             return new {
                  id= pizza.id,
                  name=pizza.Name ,

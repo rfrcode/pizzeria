@@ -8,14 +8,26 @@ namespace pizzeria.services
     {
   
         private readonly IRepositoryPizza _repositoryPizza;
-     //   private readonly IFileRepository _repositoryFile;
-        public PizzaService(IRepositoryPizza repositoryPizza)
+         private readonly IFileRepository _repositoryFile;
+        public PizzaService(IRepositoryPizza repositoryPizza, IFileRepository fileRepository)
         {
             _repositoryPizza = repositoryPizza;
+            _repositoryFile =  fileRepository;
+
         }
+
+        public object AddImage(byte[] image)
+        {
+            var file = File.Create(image);             
+             _repositoryFile.Add(file);
+            return new
+            {
+                Id = file.Id
+            };
+        }
+
         public object AddPizza(DTOPizza newPizza)
         {
-
             //crear lista de ingredientes
             var pizza = Pizza.Create(newPizza);
             _repositoryPizza.Pizza.Add(pizza);
@@ -25,23 +37,6 @@ namespace pizzeria.services
                 id = pizza.id,
                 name = pizza.Name
             };
-        }
-
-
-        public object AddImage(byte[] image)
-        {
-            var file = File.Create(image);  
-            //Guardar en Redis
-       //     _repositoryFile.Add(file);
-
-           // _repositoryFile.Add(image);
-        
-            return new
-            {
-                Id = file.Id
-            };
-
-
         }
     }
 

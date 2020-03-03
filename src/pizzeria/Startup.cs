@@ -1,21 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using pizzeria.services;
 using pizzeria.infrastructure;
 using pizzeria.utils;
-
 using Microsoft.EntityFrameworkCore;
-
 
 namespace pizzeria
 {
@@ -46,8 +37,15 @@ namespace pizzeria
             services.Add(pizzaService);
             var repositoryPizza = new ServiceDescriptor(typeof(IRepositoryPizza), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(repositoryPizza);
+
             var streamService = new ServiceDescriptor(typeof(IStreamService),typeof(StreamService),ServiceLifetime.Scoped);
             services.Add(streamService);
+
+            var fileRepository = new ServiceDescriptor(typeof(IFileRepository),typeof(FileRepository),ServiceLifetime.Scoped);
+            services.Add(fileRepository);
+
+
+
 
             
 

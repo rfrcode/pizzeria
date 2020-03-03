@@ -7,7 +7,7 @@ namespace pizzeria.Domain
         public Guid id {get; set;}
         public string Name {get; set; }
         public Decimal price {get; set; }
-        
+         
 
     }
 }

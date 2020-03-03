@@ -10,7 +10,7 @@ namespace pizzeria.dtos
 
         [Required]
         public string Name { get; set; }
-        [Range(0, 10)]
+        [Required]
         public Decimal price { get; set; }
         //lista commentarios
 

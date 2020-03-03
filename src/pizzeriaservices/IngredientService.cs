@@ -20,7 +20,8 @@ namespace pizzeria.services
             _repositoryIngredient.SaveChanges(); 
             return new {
                  id= pizza.id,
-                 name=pizza.Name   
+                 name=pizza.Name ,
+                 price=pizza.price  
             };     
         }
 

@@ -43,7 +43,6 @@ namespace pizzeria.services
             //retornar el jwt y guardar en redis la session
             return new JwtBuilder()
                 .WithAlgorithm(new HMACSHA256Algorithm())
-                //todo leer de config
                 .WithSecret(_configuration.GetValue<string>("secret"))
                 .AddClaim("exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds())
                 .AddClaim("user", user.Name)            

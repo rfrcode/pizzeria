@@ -2,6 +2,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using pizzeria.dtos;
 using pizzeria.services;
 using pizzeria.utils;
 
@@ -30,6 +31,12 @@ namespace pizzeria.Controllers
             var result = _streamService.GetBytes(file);
             var imageId =_pizzaService.AddImage(result);
             return Ok(imageId);
+        }
+        [HttpPost]
+        public IActionResult PostPizza([FromBody] DTOPizza pizzaDto)
+        {
+            _pizzaService.AddPizza(pizzaDto);
+            return Ok();
         }
     }
 }

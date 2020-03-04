@@ -44,10 +44,14 @@ namespace pizzeria
             var fileRepository = new ServiceDescriptor(typeof(IFileRepository),typeof(FileRepository),ServiceLifetime.Scoped);
             services.Add(fileRepository);
 
-		     var ingredientServices = new ServiceDescriptor(typeof(IIngredientService), typeof(IngredientService), ServiceLifetime.Scoped);
-            var repositoryIngredient = new ServiceDescriptor(typeof(IRepositoryIngredient), typeof(PizzeriaContext), ServiceLifetime.Scoped);
+		    var ingredientServices = new ServiceDescriptor(typeof(IIngredientService), typeof(IngredientService), ServiceLifetime.Scoped);
             services.Add(ingredientServices);
+            var repositoryIngredient = new ServiceDescriptor(typeof(IRepositoryIngredient), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(repositoryIngredient);
+            var imageServer = new ServiceDescriptor(typeof(IImageServer),typeof(ImageServer),ServiceLifetime.Scoped);
+            services.Add(imageServer);
+            
+            services.AddHttpClient();
 
 
 

@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "node",
+            "request": "launch",
+            "name": "Image Server",
+            "program": "${workspaceFolder}/src/ImageServer/server.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
             "name": "Pizzeria - .NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",

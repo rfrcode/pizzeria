@@ -9,10 +9,8 @@ namespace pizzeria.dtos
     {
 
         [Required]
-        public string Name { get; set; }
-        [Range(0, 10)]
-        public List<Guid> Ingredients { get; set; }
-
+        public string Name { get; set; }        
+        public HashSet<Guid> Ingredients { get; set; }
         public Guid Image { get; set; }
 
     }

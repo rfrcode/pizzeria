@@ -1,10 +1,13 @@
-using System.Collections.Generic;
-namespace pizzeria.Domain{
+using System;
+namespace pizzeria.Domain
+{
 
-class PizzaIngredient{
+    public class PizzaIngredient
+    {
 
-     // public Guid idPizza {get;set}
+        public Pizza Pizza { get; set; }
+        public Ingredient Ingredient { get; set; }
 
-}
+    }
 
 }

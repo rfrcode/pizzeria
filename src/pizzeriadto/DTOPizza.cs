@@ -12,9 +12,8 @@ namespace pizzeria.dtos
         public string Name { get; set; }
         [Range(0, 10)]
         public List<Guid> Ingredients { get; set; }
-        //lista commentarios
 
-
+        public Guid Image { get; set; }
 
     }
 

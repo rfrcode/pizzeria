@@ -11,9 +11,8 @@ namespace pizzeria.Domain
         public String Name { get; set; }
 
         public byte[] Image { get; set; }
-        public List<Guid> Ingredients { get;set; }
-
-        //lista comentarios
+        public HashSet<Guid> Ingredients { get;set; }
+ 
         // const de 5.00M
 
 

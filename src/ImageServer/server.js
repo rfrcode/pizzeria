@@ -2,8 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const app = express();
 const upload = require('multer')()
-app.use(bodyParser.json());
-app.post('/images',/*upload.any(),*/(req,res)=>{
+//app.use(bodyParser.json());
+app.post('/images',upload	.any(),(req,res)=>{
   
   res.end(JSON.stringify([
     'url1',

@@ -4,6 +4,8 @@ using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.IO;
+using System.Net.Http.Headers;
 
 public class ImageServer : IImageServer
 {
@@ -17,17 +19,43 @@ public class ImageServer : IImageServer
     }
     public async ValueTask<IEnumerable<String>> GetImages(byte[] image)
     {
-        var url = _configuration.GetValue<string>(IMAGEURL);        
-        var client = _clientFactory.CreateClient();
-        //TODO ARREGLAR MULTIPARTFORMADATA
-        var multipart = new MultipartContent();
-        
-        multipart.Add(new ByteArrayContent(image));
-        var response = await client.PostAsync(url, multipart);
+        try
+        {
+            var url = _configuration.GetValue<string>(IMAGEURL);
+            var client = _clientFactory.CreateClient();
+            //TODO ARREGLAR MULTIPARTFORMADATA
+            var multipart = new MultipartFormDataContent();
 
-        using (var responseStream = await response.Content.ReadAsStreamAsync()){
-            return await JsonSerializer.DeserializeAsync<IEnumerable<String>>(responseStream);
+            using (MemoryStream ms = new MemoryStream(image))
+            {
+                var name = "pepe";
+                var stream = new StreamContent(ms);
+               /* stream.Headers.Add("Content-Type", "application/octet-stream");
+                stream.Headers.Add("Content-Disposition", "form-data; name=\"file\"; filename=\"" + name + "\"");
+                multipart.Add(stream, "pepe", name);*/
+
+            /*     stream.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data");
+                 stream.Headers.ContentDisposition.Name = "\"file\"";
+                stream.Headers.ContentDisposition.FileName = "\"" + name + "\"";
+                stream.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                multipart.Add(stream);*/
+
+            }
+
+            var response = await client.PostAsync(new Uri(url), multipart);
+            //var response = await client.PostAsync(url, multipart);
+
+            using (var responseStream = await response.Content.ReadAsStreamAsync())
+            {
+                return await JsonSerializer.DeserializeAsync<IEnumerable<String>>(responseStream);
+            }
         }
-            
+        catch (Exception e)
+        {
+            throw e;
+        }
+
+
+
     }
 }

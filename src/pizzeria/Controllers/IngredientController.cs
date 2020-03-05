@@ -1,10 +1,11 @@
-using System.Collections.Generic;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using pizzeria.dtos;
-using pizzeria.services;
 
+using Microsoft.AspNetCore.Http;
+using pizzeria.Dtos;
+using pizzeria.Application;
+using CsvHelper;
 
 namespace pizzeria.Controllers
 {
@@ -24,9 +25,25 @@ namespace pizzeria.Controllers
 
 
         [HttpPost]
-        public IActionResult Post()
-        { 
-            return Ok();
+        public IActionResult ingredient([FromForm]IFormFile csv)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+
+            }
+            using (MemoryStream ms = new MemoryStream())
+            {
+                csv.CopyTo(ms);
+                using (TextReader fileReader = new StreamReader(ms))
+                {
+                    var csvReader = new CsvReader(fileReader);
+                    var result = csvReader.GetRecords<IngredientFileRead>();
+                    _ingredientService.AddRange(result);
+                    return Ok();
+                }
+            }
+
         }
     }
 }

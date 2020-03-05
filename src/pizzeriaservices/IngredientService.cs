@@ -1,8 +1,10 @@
-using pizzeria.dtos;
+using System.Collections.Generic;
 using pizzeria.Domain;
+using pizzeria.Dtos;
+using pizzeria.Infraestructure;
 using pizzeria.infrastructure;
 
-namespace pizzeria.services
+namespace pizzeria.Application
 {
     public class IngredientService : IIngredientService
     {
@@ -11,21 +13,14 @@ namespace pizzeria.services
         {
             _repositoryIngredient = repositoryIngredient;
         }
-        public object AddIngredient(DTOIngredient newPizza)
+
+        public void AddRange(IEnumerable<IngredientFileRead> ingredientFileRead)
         {
-
-            //crear lista de ingredientes
-            var pizza = Ingredient.Create(newPizza);
-            _repositoryIngredient.Ingredient.Add(pizza); 
+            foreach(var ingredient in ingredientFileRead){
+                var ing=Ingredient.Create(ingredient);
+                _repositoryIngredient.Ingredient.Add(ing);
+            }
             _repositoryIngredient.SaveChanges();
-            System.Console.Write("bien");
-            return new {
-                 id= pizza.id,
-                 name=pizza.Name ,
-                 price=pizza.price  
-            };     
         }
-
     }
-
 }

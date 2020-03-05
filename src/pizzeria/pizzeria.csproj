@@ -3,17 +3,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="JWT" Version="6.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2" /> 
-      
-  
-  <ProjectReference Include="../pizzeriadto/pizzeriadto.csproj" />
-  <ProjectReference Include="../pizzeriainfraestrure/pizzeriainfraestrure.csproj" />
-  <ProjectReference Include="../pizzeriaservices/pizzeriaservices.csproj" />
-  
-  
- 
+    <PackageReference Include="CsvTools" Version="1.0.12"/>
+    <PackageReference Include="JWT" Version="6.1.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2"/>
+    <PackageReference Include="System.IO.FileSystem" Version="4.3.0"/>
+    <PackageReference Include="CsvHelper.Fluent" Version="0.1.4"/>
+    <PackageReference Include="CsvReader.dll" Version="1.0.0"/>
+    <ProjectReference Include="../pizzeriadto/pizzeriadto.csproj"/>
+    <ProjectReference Include="../pizzeriainfraestrure/pizzeriainfraestrure.csproj"/>
+    <ProjectReference Include="../pizzeriaservices/pizzeriaservices.csproj"/>
   </ItemGroup>
 </Project>

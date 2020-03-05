@@ -7,6 +7,7 @@ using pizzeria.services;
 using pizzeria.infrastructure;
 using pizzeria.utils;
 using Microsoft.EntityFrameworkCore;
+using pizzeria.Application;
 
 namespace pizzeria
 {
@@ -49,8 +50,8 @@ namespace pizzeria
             var repositoryIngredient = new ServiceDescriptor(typeof(IRepositoryIngredient), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(repositoryIngredient);
             var imageServer = new ServiceDescriptor(typeof(IImageServer),typeof(ImageServer),ServiceLifetime.Scoped);
-            services.Add(imageServer);
-            
+            services.Add(imageServer);           
+
             services.AddHttpClient();
 
 

@@ -30,20 +30,15 @@ public class ImageServer : IImageServer
             {
                 var name = "pepe";
                 var stream = new StreamContent(ms);
-               /* stream.Headers.Add("Content-Type", "application/octet-stream");
+                 stream.Headers.Add("Content-Type", "application/octet-stream");
                 stream.Headers.Add("Content-Disposition", "form-data; name=\"file\"; filename=\"" + name + "\"");
-                multipart.Add(stream, "pepe", name);*/
+                multipart.Add(stream, "pepe", name); 
 
-            /*     stream.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data");
-                 stream.Headers.ContentDisposition.Name = "\"file\"";
-                stream.Headers.ContentDisposition.FileName = "\"" + name + "\"";
-                stream.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                multipart.Add(stream);*/
-
+        
             }
 
-            var response = await client.PostAsync(new Uri(url), multipart);
-            //var response = await client.PostAsync(url, multipart);
+           // var response = await client.PostAsync(new Uri(url), multipart);
+            var response = await client.PostAsync(url, multipart);
 
             using (var responseStream = await response.Content.ReadAsStreamAsync())
             {

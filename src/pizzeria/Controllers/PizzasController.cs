@@ -10,7 +10,7 @@ using pizzeria.utils;
 namespace pizzeria.Controllers
 {
     [ApiController]
-   //[Route("[controller]")]
+    //[Route("[controller]")]
     public class PizzasController : ControllerBase
     {
 
@@ -18,7 +18,7 @@ namespace pizzeria.Controllers
         private readonly pizzeria.services.IPizzaService _pizzaService;
         private readonly IStreamService _streamService;
 
-        public PizzasController(ILogger<PizzasController> logger, IPizzaService pizzaService,IStreamService streamService)
+        public PizzasController(ILogger<PizzasController> logger, IPizzaService pizzaService, IStreamService streamService)
         {
             _logger = logger;
             _pizzaService = pizzaService;
@@ -26,18 +26,18 @@ namespace pizzeria.Controllers
         }
 
 
-       // [HttpPost("/pizzas/image")]
+        // [HttpPost("/pizzas/image")]
         [HttpPost]
-        //[Route("pizzas/image")]    
+        [Route("pizzas/image")]
         public IActionResult Post([FromForm]IFormFile file)
         {
             var result = _streamService.GetBytes(file);
-            var imageId =_pizzaService.AddImage(result);
+            var imageId = _pizzaService.AddImage(result);
             return Ok(imageId);
         }
-       [HttpPost]
+        [HttpPost]
         // [HttpPost("pizzas")]
-        [Route("pizzas")]  
+        [Route("pizzas")]
         public IActionResult PostPizza([FromBody] DTOPizza pizzaDto)
         {
             _pizzaService.AddPizza(pizzaDto);

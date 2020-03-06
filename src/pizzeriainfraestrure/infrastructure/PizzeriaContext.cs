@@ -3,25 +3,18 @@ using pizzeria.Domain;
 
 namespace pizzeria.infrastructure
 {
-
     public class PizzeriaContext : DbContext, IUoW, IRepositoryUser, IRepositoryPizza, IRepositoryIngredient
-
     {
         public PizzeriaContext(DbContextOptions<PizzeriaContext> options) : base(options)
         {
 
         }
-
-        public PizzeriaContext()
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasKey(c => new { c.id });
             modelBuilder.Entity<Ingredient>().HasKey(c => new { c.id });
-           
-           // modelBuilder.Entity<Pizza>().HasKey(c => new { c.id, c.Ingredients});
+
+            // modelBuilder.Entity<Pizza>().HasKey(c => new { c.id, c.Ingredients});
 
         }
 
@@ -39,8 +32,5 @@ namespace pizzeria.infrastructure
                 throw;
             }
         }
-
-
     }
-
 }

@@ -12,7 +12,6 @@ namespace pizzeria.Controllers
     [Route("[controller]")]
     public class IngredientController : ControllerBase
     {
-
         private readonly ILogger<IngredientController> _logger;
         private readonly IIngredientService _ingredientService;
 
@@ -22,10 +21,9 @@ namespace pizzeria.Controllers
             _ingredientService = ingredientService;
         }
 
-
         [HttpPost]
         public IActionResult Post()
-        { 
+        {
             return Ok();
         }
     }

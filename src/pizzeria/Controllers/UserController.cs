@@ -9,7 +9,6 @@ namespace pizzeria.Controllers
     //[Route("[controller]")]
     public class UserController : ControllerBase
     {
-
         private readonly ILogger<UserController> _logger;
         private readonly IUserService _userService;
 

@@ -7,11 +7,8 @@ using StackExchange.Redis;
 
 namespace pizzeria.infrastructure
 {
-
-
     public class FileRepository : IFileRepository
     {
-
         readonly IConfiguration _configuration;
         readonly string _connection;
         const string KEYCONNECTION = "RedisConnection";
@@ -24,15 +21,12 @@ namespace pizzeria.infrastructure
 
         public void Add(Domain.File image)
         {
-
             using (ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(_connection))
             {
                 IDatabase db = redis.GetDatabase();
                 db.SetAdd(image.Id.ToString(), image.Image);
                 db.KeyExpire(image.Id.ToString(), TimeSpan.FromHours(12));
             }
-
-
         }
 
         public byte[] Get(Guid Id)
@@ -42,21 +36,18 @@ namespace pizzeria.infrastructure
                 IDatabase db = redis.GetDatabase();
                 var result = db.SetMembers(Id.ToString());
                 return result[0];
-               
-               //var a = db.gt
-                
+
+                //var a = db.gt
+
             }
         }
-        public void Delete(Guid Id){
+        public void Delete(Guid Id)
+        {
             using (ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(_connection))
             {
                 IDatabase db = redis.GetDatabase();
                 db.KeyDelete(Id.ToString());
-                
             }
         }
-
-        
-
     }
 }

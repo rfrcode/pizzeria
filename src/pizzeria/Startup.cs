@@ -29,8 +29,8 @@ namespace pizzeria
             //  services.AddCors();
             services.AddControllers();
             var userServices = new ServiceDescriptor(typeof(IUserService), typeof(UserServices), ServiceLifetime.Scoped);
-            var repositoryUser = new ServiceDescriptor(typeof(IRepositoryUser), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(userServices);
+            var repositoryUser = new ServiceDescriptor(typeof(IRepositoryUser), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(repositoryUser);
 
             var pizzaService = new ServiceDescriptor(typeof(IPizzaService), typeof(PizzaService), ServiceLifetime.Scoped);
@@ -38,26 +38,20 @@ namespace pizzeria
             var repositoryPizza = new ServiceDescriptor(typeof(IRepositoryPizza), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(repositoryPizza);
 
-            var streamService = new ServiceDescriptor(typeof(IStreamService),typeof(StreamService),ServiceLifetime.Scoped);
+            var streamService = new ServiceDescriptor(typeof(IStreamService), typeof(StreamService), ServiceLifetime.Scoped);
             services.Add(streamService);
 
-            var fileRepository = new ServiceDescriptor(typeof(IFileRepository),typeof(FileRepository),ServiceLifetime.Scoped);
+            var fileRepository = new ServiceDescriptor(typeof(IFileRepository), typeof(FileRepository), ServiceLifetime.Scoped);
             services.Add(fileRepository);
 
-		    var ingredientServices = new ServiceDescriptor(typeof(IIngredientService), typeof(IngredientService), ServiceLifetime.Scoped);
+            var ingredientServices = new ServiceDescriptor(typeof(IIngredientService), typeof(IngredientService), ServiceLifetime.Scoped);
             services.Add(ingredientServices);
             var repositoryIngredient = new ServiceDescriptor(typeof(IRepositoryIngredient), typeof(PizzeriaContext), ServiceLifetime.Scoped);
             services.Add(repositoryIngredient);
-            var imageServer = new ServiceDescriptor(typeof(IImageServer),typeof(ImageServer),ServiceLifetime.Scoped);
+            var imageServer = new ServiceDescriptor(typeof(IImageServer), typeof(ImageServer), ServiceLifetime.Scoped);
             services.Add(imageServer);
-            
+
             services.AddHttpClient();
-
-
-
-            
-
-
 
             services.AddDbContext<PizzeriaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }

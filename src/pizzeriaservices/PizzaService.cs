@@ -30,7 +30,7 @@ namespace pizzeria.services
         public object AddPizza(DTOPizza newPizza)
         {
             var image = _repositoryFile.Get(newPizza.Image);
-            _imageServer.GetImages(image);
+             _imageServer.GetImages(image);
             //_repositoryFile.Delete(newPizza.Image);
             return null;
             //crear lista de ingredientes

@@ -26,17 +26,24 @@ public class ImageServer : IImageServer
             //TODO ARREGLAR MULTIPARTFORMADATA
             var multipart = new MultipartFormDataContent();
 
-            using (MemoryStream ms = new MemoryStream(image))
-            {
-                var name = "pepe";
-                var stream = new StreamContent(ms);
-                stream.Headers.Add("Content-Type", "application/octet-stream");
-                stream.Headers.Add("Content-Disposition", "form-data; name=\"file\"; filename=\"" + name + "\"");
-                multipart.Add(stream, "pepe", name);
-            }
 
-            // var response = await client.PostAsync(new Uri(url), multipart);
-            var response = await client.PostAsync(url, multipart);
+           ByteArrayContent stream = new ByteArrayContent(image);
+           multipart.Add(stream, "pepe", "pepe");
+           
+           /*using(MemoryStream ms = new MemoryStream(image)){
+               ms.Position =0;
+               var stream = new StreamContent(ms);              
+               multipart.Add(stream, "pepe", "pepe");
+           }*/
+
+
+            //stream.Headers.Add("Content-Type", "application/octet-stream");
+            
+
+
+
+            var response = await client.PostAsync(new Uri(url), multipart);
+
 
             using (var responseStream = await response.Content.ReadAsStreamAsync())
             {

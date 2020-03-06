@@ -11,10 +11,26 @@ namespace pizzeria.infrastructure
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            //TODO hacer las migraciones
+            
             modelBuilder.Entity<User>().HasKey(c => new { c.id });
             modelBuilder.Entity<Ingredient>().HasKey(c => new { c.id });
+            modelBuilder.Entity<Pizza>().HasKey(c => new { c.Id });
 
-            // modelBuilder.Entity<Pizza>().HasKey(c => new { c.id, c.Ingredients});
+            //one to many   
+            modelBuilder.Entity<Pizza>()
+                        .HasMany<Image>(p => p.Images)
+                        .WithOne().IsRequired();
+
+              /*modelBuilder.Entity<PizzaIngredient>()
+                            .HasMany<Pizza>(pi => pi.Pizza)
+                            .WithOne().IsRequired(); */
+
+            modelBuilder.Entity<Pizza>()
+                           .HasMany<PizzaIngredient>(pi => pi.Ingredients)
+                          .WithOne().IsRequired();
+
 
         }
 

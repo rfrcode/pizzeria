@@ -23,7 +23,7 @@ public class ImageServer : IImageServer
         {
             var url = _configuration.GetValue<string>(IMAGEURL);
             var client = _clientFactory.CreateClient();
-            //TODO ARREGLAR MULTIPARTFORMADATA
+   
             var multipart = new MultipartFormDataContent();
 
 
@@ -31,17 +31,11 @@ public class ImageServer : IImageServer
            multipart.Add(stream, "pepe", "pepe");
            
            /*using(MemoryStream ms = new MemoryStream(image)){
-               ms.Position =0;
                var stream = new StreamContent(ms);              
                multipart.Add(stream, "pepe", "pepe");
            }*/
-
-
             //stream.Headers.Add("Content-Type", "application/octet-stream");
             
-
-
-
             var response = await client.PostAsync(new Uri(url), multipart);
 
 

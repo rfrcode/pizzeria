@@ -1,6 +1,7 @@
-namespace pizzeria.infrastructure{
+namespace pizzeria.infrastructure
+{
     public interface IUoW
-    {   
+    {
         int SaveChanges();
     }
 }

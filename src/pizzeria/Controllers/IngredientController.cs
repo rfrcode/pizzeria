@@ -13,7 +13,6 @@ namespace pizzeria.Controllers
     [Route("[controller]")]
     public class IngredientController : ControllerBase
     {
-
         private readonly ILogger<IngredientController> _logger;
         private readonly IIngredientService _ingredientService;
 
@@ -23,8 +22,8 @@ namespace pizzeria.Controllers
             _ingredientService = ingredientService;
         }
 
-
         [HttpPost]
+<<<<<<< HEAD
         public IActionResult ingredient([FromForm]IFormFile csv)
         {
             if (!ModelState.IsValid)
@@ -44,6 +43,11 @@ namespace pizzeria.Controllers
                 }
             }
 
+=======
+        public IActionResult Post()
+        {
+            return Ok();
+>>>>>>> develop
         }
     }
 }

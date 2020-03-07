@@ -14,6 +14,7 @@ namespace pizzeria.Application
             _repositoryIngredient = repositoryIngredient;
         }
 
+<<<<<<< HEAD
         public void AddRange(IEnumerable<IngredientFileRead> ingredientFileRead)
         {
             foreach(var ingredient in ingredientFileRead){
@@ -21,6 +22,19 @@ namespace pizzeria.Application
                 _repositoryIngredient.Ingredient.Add(ing);
             }
             _repositoryIngredient.SaveChanges();
+=======
+            //crear lista de ingredientes
+            var pizza = Ingredient.Create(newPizza);
+            _repositoryIngredient.Ingredient.Add(pizza);
+            _repositoryIngredient.SaveChanges();
+            System.Console.Write("bien");
+            return new
+            {
+                id = pizza.id,
+                name = pizza.Name,
+                price = pizza.price
+            };
+>>>>>>> develop
         }
     }
 }

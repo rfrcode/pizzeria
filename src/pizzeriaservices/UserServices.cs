@@ -3,7 +3,6 @@ using pizzeria.dtos;
 using pizzeria.Domain;
 using System.Linq;
 
-
 using pizzeria.services;
 using pizzeria.infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -46,10 +45,8 @@ namespace pizzeria.services
                 //todo leer de config
                 .WithSecret(_configuration.GetValue<string>("secret"))
                 .AddClaim("exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds())
-                .AddClaim("user", user.Name)            
+                .AddClaim("user", user.Name)
                 .Encode();
-
-
         }
         //todo
         public object Logout(DTOLogin login)
@@ -94,5 +91,4 @@ namespace pizzeria.services
             //retornar el nuevo
         }
     }
-
 }

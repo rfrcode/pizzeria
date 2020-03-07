@@ -4,6 +4,8 @@ using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.IO;
+using System.Net.Http.Headers;
 
 public class ImageServer : IImageServer
 {
@@ -17,17 +19,34 @@ public class ImageServer : IImageServer
     }
     public async ValueTask<IEnumerable<String>> GetImages(byte[] image)
     {
-        var url = _configuration.GetValue<string>(IMAGEURL);        
-        var client = _clientFactory.CreateClient();
-        //TODO ARREGLAR MULTIPARTFORMADATA
-        var multipart = new MultipartContent();
-        
-        multipart.Add(new ByteArrayContent(image));
-        var response = await client.PostAsync(url, multipart);
+        try
+        {
+            var url = _configuration.GetValue<string>(IMAGEURL);
+            var client = _clientFactory.CreateClient();
+   
+            var multipart = new MultipartFormDataContent();
 
-        using (var responseStream = await response.Content.ReadAsStreamAsync()){
-            return await JsonSerializer.DeserializeAsync<IEnumerable<String>>(responseStream);
-        }
+
+           ByteArrayContent stream = new ByteArrayContent(image);
+           multipart.Add(stream, "pepe", "pepe");
+           
+           /*using(MemoryStream ms = new MemoryStream(image)){
+               var stream = new StreamContent(ms);              
+               multipart.Add(stream, "pepe", "pepe");
+           }*/
+            //stream.Headers.Add("Content-Type", "application/octet-stream");
             
+            var response = await client.PostAsync(new Uri(url), multipart);
+
+
+            using (var responseStream = await response.Content.ReadAsStreamAsync())
+            {
+                return await JsonSerializer.DeserializeAsync<IEnumerable<String>>(responseStream);
+            }
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
     }
 }

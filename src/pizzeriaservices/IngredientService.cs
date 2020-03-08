@@ -21,9 +21,9 @@ namespace pizzeria.services
             System.Console.Write("bien");
             return new
             {
-                id = pizza.id,
+                id = pizza.Id,
                 name = pizza.Name,
-                price = pizza.price
+                price = pizza.Price
             };
         }
     }

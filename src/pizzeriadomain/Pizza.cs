@@ -13,6 +13,8 @@ namespace pizzeria.Domain
         public HashSet<Image> Images {get;set;}
         public HashSet<PizzaIngredient> Ingredients { get; set; }
 
+        public Decimal Price {get;set;}
+
         // const de 5.00M
 
 

@@ -12,25 +12,38 @@ namespace pizzeria.infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+              modelBuilder.Entity<User>().HasKey(c => new { c.id });   
             //TODO hacer las migraciones
-            
-            modelBuilder.Entity<User>().HasKey(c => new { c.id });
-            modelBuilder.Entity<Ingredient>().HasKey(c => new { c.id });
-            modelBuilder.Entity<Pizza>().HasKey(c => new { c.Id });
 
-            //one to many   
-            modelBuilder.Entity<Pizza>()
-                        .HasMany<Image>(p => p.Images)
-                        .WithOne().IsRequired();
 
-              /*modelBuilder.Entity<PizzaIngredient>()
-                            .HasMany<Pizza>(pi => pi.Pizza)
-                            .WithOne().IsRequired(); */
+            //TODO arreglar los nombres de las propiedades may. la primera de la propiedad
 
-            modelBuilder.Entity<Pizza>()
-                           .HasMany<PizzaIngredient>(pi => pi.Ingredients)
-                          .WithOne().IsRequired();
+            modelBuilder.Entity<Ingredient>(ingredient =>
+                {
+                    ingredient.HasKey(i => i.Id);
+                    ingredient.Property(i => i.Price).IsRequired();
+                    ingredient.Property(i => i.Name).IsRequired();
 
+                });
+
+           modelBuilder.Entity<Pizza>(pizza =>
+            {
+                pizza.HasKey(p => p.Id);
+                pizza.Property(p => p.Name).IsRequired();
+                pizza.Ignore(p => p.Price);
+                pizza.HasMany<Image>(p => p.Images);
+            });
+
+            modelBuilder.Entity<PizzaIngredient>(pizin =>
+             {
+                 pizin.HasKey(pi => new { pi.Id });
+
+                 pizin.HasOne<Ingredient>(pi => pi.Ingredient)
+                 .WithMany().HasForeignKey(pi => pi.Id).IsRequired();
+
+                 pizin.HasOne<Pizza>(pi => pi.Pizza).WithMany()
+               .HasForeignKey(pi => pi.Id).IsRequired();
+             });
 
         }
 

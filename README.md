@@ -57,7 +57,7 @@ _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener 
 _Para Crear las migraciones de la bbdd ejecutar el siguiente comando desde la carpeta src/pizzeria
 
 ```
-dotnet ef migrations add InitialCreate --startup-project ../pizzeria --project ../infraestructure
+dotnet ef migrations add InitialCreate --startup-project ./src/pizzeria --project ./src/pizzeriainfraestrure/ 
 ```
 _Actualizar la bbdd
 ```
